@@ -15,3 +15,7 @@ patches:
     target:
       kind: Application
       name: ollama
+  - path: patches/github-runner.yaml
+    target:
+      kind: Application
+      name: github-runner
