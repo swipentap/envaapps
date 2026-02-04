@@ -1,0 +1,102 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgresql
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/swipentap/prod.git
+    targetRevision: main
+    path: manifests/postgresql
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgresql
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+  ignoreDifferences:
+    - group: postgresql.cnpg.io
+      kind: Cluster
+      jsonPointers:
+        - /status
+        - /metadata/annotations
+        - /metadata/labels
+        - /metadata/generation
+        - /metadata/resourceVersion
+        - /metadata/uid
+        - /metadata/creationTimestamp
+        - /spec/affinity
+        - /spec/enablePDB
+        - /spec/enableSuperuserAccess
+        - /spec/failoverDelay
+        - /spec/imageName
+        - /spec/logLevel
+        - /spec/maxSyncReplicas
+        - /spec/minSyncReplicas
+        - /spec/monitoring
+        - /spec/postgresGID
+        - /spec/postgresUID
+        - /spec/primaryUpdateMethod
+        - /spec/primaryUpdateStrategy
+        - /spec/replicationSlots
+        - /spec/smartShutdownTimeout
+        - /spec/startDelay
+        - /spec/stopDelay
+        - /spec/storage/resizeInUseVolumes
+        - /spec/postgresql/parameters/archive_mode
+        - /spec/postgresql/parameters/archive_timeout
+        - /spec/postgresql/parameters/dynamic_shared_memory_type
+        - /spec/postgresql/parameters/log_destination
+        - /spec/postgresql/parameters/log_directory
+        - /spec/postgresql/parameters/log_filename
+        - /spec/postgresql/parameters/log_rotation_age
+        - /spec/postgresql/parameters/log_rotation_size
+        - /spec/postgresql/parameters/log_truncate_on_rotation
+        - /spec/postgresql/parameters/logging_collector
+        - /spec/postgresql/parameters/max_parallel_workers
+        - /spec/postgresql/parameters/max_replication_slots
+        - /spec/postgresql/parameters/max_worker_processes
+        - /spec/postgresql/parameters/shared_memory_type
+        - /spec/postgresql/parameters/shared_preload_libraries
+        - /spec/postgresql/parameters/ssl_max_protocol_version
+        - /spec/postgresql/parameters/ssl_min_protocol_version
+        - /spec/postgresql/parameters/wal_keep_size
+        - /spec/postgresql/parameters/wal_level
+        - /spec/postgresql/parameters/wal_log_hints
+        - /spec/postgresql/parameters/wal_receiver_timeout
+        - /spec/postgresql/parameters/wal_sender_timeout
+        - /spec/postgresql/syncReplicaElectionConstraint
+        - /spec/managed
+    - group: ""
+      kind: ServiceAccount
+      name: db-init
+      jsonPointers:
+        - /metadata/resourceVersion
+        - /metadata/uid
+        - /metadata/annotations
+    - group: rbac.authorization.k8s.io
+      kind: Role
+      name: db-init
+      jsonPointers:
+        - /metadata/resourceVersion
+        - /metadata/uid
+        - /metadata/annotations
+    - group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      name: db-init
+      jsonPointers:
+        - /metadata/resourceVersion
+        - /metadata/uid
+        - /metadata/annotations
+    - kind: Ingress
+      jsonPointers:
+        - /status
