@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sonarqube-config
+  namespace: sonarqube
+data:
+  sonar.properties: |
+    sonar.jdbc.url=jdbc:postgresql://postgresql-rw.postgresql.svc.cluster.local:5432/sonar
+    sonar.jdbc.username=postgres
+    sonar.jdbc.password=postgres123
+    sonar.web.javaOpts=-Xmx512m -Xms128m
+    sonar.ce.javaOpts=-Xmx512m -Xms128m
