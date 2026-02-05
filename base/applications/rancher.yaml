@@ -23,6 +23,12 @@ spec:
         tls: external
         replicas: 1
         bootstrapPassword: admin
+        extraEnv:
+        - name: CATTLE_BOOTSTRAP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bootstrap-secret
+              key: bootstrapPassword
         global:
           cattle:
             systemDefaultRegistry: ""

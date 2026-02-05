@@ -23,6 +23,12 @@ spec:
         tls: external
         replicas: 1
         bootstrapPassword: admin
+        extraEnv:
+        - name: CATTLE_BOOTSTRAP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bootstrap-secret
+              key: bootstrapPassword
         global:
           cattle:
             systemDefaultRegistry: ""
@@ -36,20 +42,3 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-  ignoreDifferences:
-  - group: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: rancher-post-delete
-  - group: rbac.authorization.k8s.io
-    kind: ClusterRoleBinding
-    name: rancher-post-delete
-  - group: batch
-    kind: Job
-    namespace: cattle-system
-    name: rancher-post-delete
-  - kind: ServiceAccount
-    namespace: cattle-system
-    name: rancher-post-delete
-  - kind: ConfigMap
-    namespace: cattle-system
-    name: rancher-post-delete
