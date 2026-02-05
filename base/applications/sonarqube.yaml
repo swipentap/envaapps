@@ -11,8 +11,7 @@ spec:
     repoURL: https://github.com/swipentap/envaapps
     targetRevision: main
     path: manifests/sonarqube/overlays/prod
-    directory:
-      recurse: true
+    kustomize: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: sonarqube
