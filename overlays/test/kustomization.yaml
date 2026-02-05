@@ -19,3 +19,15 @@ patches:
     target:
       kind: Application
       name: github-runner
+  - path: patches/rancher.yaml
+    target:
+      kind: Application
+      name: rancher
+  - path: patches/pgadmin.yaml
+    target:
+      kind: Application
+      name: pgadmin
+  - path: patches/sonarqube.yaml
+    target:
+      kind: Application
+      name: sonarqube

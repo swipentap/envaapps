@@ -208,4 +208,3 @@ metadata:
   name: rancher-critical
 preemptionPolicy: PreemptLowerPriority
 value: 1000000000
-

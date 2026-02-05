@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/swipentap/prod.git
+    repoURL: https://github.com/swipentap/envaapps
     targetRevision: main
-    path: manifests/sonarqube
+    path: manifests/sonarqube/overlays/prod
     directory:
       recurse: true
   destination:

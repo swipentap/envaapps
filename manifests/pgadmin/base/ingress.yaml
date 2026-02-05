@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pgadmin-ingress
+  namespace: pgadmin
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/headers-customrequestheaders: "X-Forwarded-Proto: https"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: pgadmin.prod.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pgadmin
+            port:
+              number: 80
+
+  tls:
+  - hosts:
+    - pgadmin.prod.net
+    secretName: tls-prod-net-wildcard

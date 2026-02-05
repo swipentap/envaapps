@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher
+  namespace: cattle-system
+spec:
+  template:
+    spec:
+      containers:
+      - name: rancher
+        env:
+        - name: CATTLE_SERVER_URL
+          value: https://rancher.dev.net

@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/swipentap/prod.git
+    repoURL: https://github.com/swipentap/envaapps
     targetRevision: main
-    path: manifests/rancher-deployment
+    path: manifests/rancher-deployment/overlays/prod
     directory:
       recurse: true
   destination:
