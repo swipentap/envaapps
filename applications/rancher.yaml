@@ -8,11 +8,25 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/swipentap/prod.git
-    targetRevision: main
-    path: manifests/rancher-deployment
-    directory:
-      recurse: true
+    repoURL: https://releases.rancher.com/server-charts/stable
+    chart: rancher
+    targetRevision: 2.13.1
+    helm:
+      releaseName: rancher
+      values: |
+        hostname: rancher.dev.net
+        ingress:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+        tls: external
+        replicas: 1
+        bootstrapPassword: admin
+        global:
+          cattle:
+            systemDefaultRegistry: ""
+        systemDefaultRegistry: ""
   destination:
     server: https://kubernetes.default.svc
     namespace: cattle-system

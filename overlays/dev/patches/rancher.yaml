@@ -5,4 +5,18 @@ metadata:
   namespace: argocd
 spec:
   source:
-    path: manifests/rancher-deployment/overlays/dev
+    helm:
+      values: |
+        hostname: rancher.dev.net
+        ingress:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+        tls: external
+        replicas: 1
+        bootstrapPassword: admin
+        global:
+          cattle:
+            systemDefaultRegistry: ""
+        systemDefaultRegistry: ""
