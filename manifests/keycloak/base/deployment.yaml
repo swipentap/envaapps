@@ -92,7 +92,6 @@ spec:
         - --optimized
         - --proxy-headers=xforwarded
         - --hostname-strict=false
-        - --hostname-strict-https=false
         env:
         - name: KC_DB
           value: postgres
