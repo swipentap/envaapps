@@ -3,3 +3,13 @@ kind: Application
 metadata:
   name: keycloak
   namespace: argocd
+spec:
+  source:
+    helm:
+      values: |
+        ingress:
+          hostname: auth.dev.net
+          extraTls:
+          - hosts:
+            - auth.dev.net
+            secretName: tls-dev-net-wildcard
