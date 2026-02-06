@@ -8,9 +8,9 @@ spec:
     helm:
       values: |
         image:
-          registry: quay.io
-          repository: keycloak/keycloak
-          tag: "24.0.5"
+          registry: docker.io
+          repository: bitnami/keycloak
+          tag: "latest"
         postgresql:
           enabled: false
         externalDatabase:
