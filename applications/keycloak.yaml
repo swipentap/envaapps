@@ -21,7 +21,7 @@ spec:
         - /opt/keycloak/bin/kc.sh
         - start
         - --optimized
-        - --proxy-headers
+        - --proxy-headers=xforwarded
         - --http-relative-path=/
         extraEnv: |
           - name: KC_PROXY
