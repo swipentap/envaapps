@@ -13,7 +13,7 @@ spec:
     targetRevision: 1.0.5
     helm:
       releaseName: certa
-      values: |
+      valuesObject:
         postgresql:
           enabled: false
         certa:
@@ -30,9 +30,9 @@ spec:
             annotations:
               traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
             tls:
-            - hosts:
-              - certa.prod.net
-              secretName: tls-prod-net-wildcard
+              - hosts:
+                  - certa.prod.net
+                secretName: tls-prod-net-wildcard
           env:
             ConnectionStrings__DefaultConnection: "Host=postgresql-rw.postgresql.svc.cluster.local:5432;Database=certa;Username=certa;Password=certa123;"
           dbInit:

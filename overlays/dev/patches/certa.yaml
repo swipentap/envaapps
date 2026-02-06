@@ -6,39 +6,11 @@ metadata:
 spec:
   source:
     helm:
-      values: |
-        postgresql:
-          enabled: false
+      valuesObject:
         certa:
-          image:
-            repository: judyandiealvarez/certa
-            tag: "1.0.2"
-          service:
-            type: NodePort
-            port: 8080
-            nodePort: 30082
           ingress:
-            enabled: true
-            className: traefik
-            annotations:
-              traefik.ingress.kubernetes.io.router.entrypoints: web,websecure
             tls:
-            - hosts:
-              - certa.dev.net
-              secretName: tls-dev-net-wildcard
-          env:
-            ConnectionStrings__DefaultConnection: "Host=postgresql-rw.postgresql.svc.cluster.local:5432;Database=certa;Username=certa;Password=certa123;"
-          dbInit:
-            enabled: true
-            dbHost: postgresql-rw.postgresql.svc.cluster.local
-            dbPort: "5432"
-            adminUser: postgres
-            adminPassword: postgres123
-            appUser: certa
-            appPassword: certa123
-            appDatabase: certa
+              - hosts:
+                  - certa.dev.net
+                secretName: tls-dev-net-wildcard
         domain: "dev.net"
-        subdomain: "certa"
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: certa

@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mailu-certificates
+  namespace: mailu
+spec:
+  secretName: mailu-certificates
+  issuerRef:
+    name: mailu-selfsigned
+    kind: Issuer
+  dnsNames:
+  - mail.prod.net
+  - mail.dev.net
+  - mail.test.net

@@ -27,6 +27,18 @@ patches:
     target:
       kind: Application
       name: rancher
+  - path: patches/mailu.yaml
+    target:
+      kind: Application
+      name: mailu
+  - path: patches/mailu-tls.yaml
+    target:
+      kind: Application
+      name: mailu-tls
+  - path: patches/coredns-dnssec.yaml
+    target:
+      kind: Application
+      name: coredns-dnssec
   - path: patches/pgadmin.yaml
     target:
       kind: Application

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tls-secret
+  name: coredns-dnssec
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,15 +10,13 @@ spec:
   source:
     repoURL: https://github.com/swipentap/envaapps
     targetRevision: main
-    path: manifests/tls
-    directory:
-      recurse: true
+    path: manifests/coredns-dnssec
   destination:
     server: https://kubernetes.default.svc
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
     - ServerSideApply=true

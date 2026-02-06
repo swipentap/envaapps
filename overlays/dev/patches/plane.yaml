@@ -10,7 +10,7 @@ spec:
     targetRevision: "1.2.0"
     helm:
       releaseName: plane-app
-      values: |
+      valuesObject:
         planeVersion: "v1.2.1"
         ingress:
           enabled: true
@@ -21,11 +21,13 @@ spec:
             traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
         ssl:
           createIssuer: false
+        external_secrets:
+          live_env_existingSecret: "plane-app-live-secrets"
         postgres:
           local_setup: false
         env:
           pgdb_remote_url: "postgresql://postgres:postgres123@postgresql-rw.postgresql.svc.cluster.local:5432/plane"
-        live_server_secret_key: "htbqvBJAgpm9bzvf3r4urJer0ENReatceh"
+          live_server_secret_key: "htbqvBJAgpm9bzvf3r4urJer0ENReatceh"
         redis:
           local_setup: true
         minio:
