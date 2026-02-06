@@ -8,4 +8,3 @@ spec:
     repoURL: https://github.com/swipentap/envaapps
     targetRevision: dev
     path: manifests/sonarqube/overlays/dev
-    kustomize: {}
