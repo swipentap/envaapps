@@ -35,6 +35,10 @@ patches:
     target:
       kind: Application
       name: mailu-tls
+  - path: patches/coredns-dnssec.yaml
+    target:
+      kind: Application
+      name: coredns-dnssec
   - path: patches/pgadmin.yaml
     target:
       kind: Application
