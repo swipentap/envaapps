@@ -5,4 +5,7 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/swipentap/envaapps
+    targetRevision: dev
     path: manifests/pgadmin/overlays/dev
+    kustomize: {}
