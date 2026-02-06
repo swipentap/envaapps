@@ -22,7 +22,6 @@ spec:
         - start
         - --optimized
         - --proxy-headers=xforwarded
-        - --http-relative-path=/
         extraEnv: |
           - name: KC_PROXY
             value: "edge"
