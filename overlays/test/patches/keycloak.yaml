@@ -5,11 +5,4 @@ metadata:
   namespace: argocd
 spec:
   source:
-    helm:
-      values: |
-        ingress:
-          hostname: auth.test.net
-          extraTls:
-          - hosts:
-            - auth.test.net
-            secretName: tls-test-net-wildcard
+    path: manifests/keycloak/overlays/test
