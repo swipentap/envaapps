@@ -89,7 +89,7 @@ spec:
         image: keycloak/keycloak:latest
         args:
         - start
-        - --optimized
+       # - --optimized
         - --proxy-headers=xforwarded
         - --hostname-strict=false
         env:
