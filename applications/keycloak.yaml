@@ -14,10 +14,6 @@ spec:
     helm:
       releaseName: keycloak
       values: |
-        image:
-          registry: docker.io
-          repository: bitnami/keycloak
-          tag: "latest"
         postgresql:
           enabled: false
         externalDatabase:

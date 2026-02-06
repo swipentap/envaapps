@@ -7,10 +7,6 @@ spec:
   source:
     helm:
       values: |
-        image:
-          registry: docker.io
-          repository: bitnami/keycloak
-          tag: "latest"
         postgresql:
           enabled: false
         externalDatabase:
