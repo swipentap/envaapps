@@ -25,6 +25,7 @@ spec:
           local_setup: false
         env:
           pgdb_remote_url: "postgresql://postgres:postgres123@postgresql-rw.postgresql.svc.cluster.local:5432/plane"
+        live_server_secret_key: "htbqvBJAgpm9bzvf3r4urJer0ENReatceh"
         redis:
           local_setup: true
         minio:
