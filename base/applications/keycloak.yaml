@@ -20,7 +20,6 @@ spec:
         command:
         - /opt/keycloak/bin/kc.sh
         - start
-        - --optimized
         - --proxy-headers=xforwarded
         extraEnv: |
           - name: KC_PROXY
