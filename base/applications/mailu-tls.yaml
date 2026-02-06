@@ -21,3 +21,9 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
+  ignoreDifferences:
+  # Secret can be created by mailu Helm (initialAccount); avoid shared-resource diff with mailu app
+  - group: ""
+    kind: Secret
+    name: mailu-initial-account
+    namespace: mailu
