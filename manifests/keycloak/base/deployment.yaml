@@ -131,8 +131,8 @@ spec:
         livenessProbe:
           httpGet:
             path: /health/live
-            port: 8080
-          initialDelaySeconds: 3600
-          periodSeconds: 10
+            port: 9000 # The management port
+          initialDelaySeconds: 120 # Adjust based on your startup time
+          periodSeconds: 15
           timeoutSeconds: 5
           failureThreshold: 3
