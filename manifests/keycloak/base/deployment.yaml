@@ -89,9 +89,6 @@ spec:
         image: keycloak/keycloak:latest
         args:
         - start
-       # - --optimized
-        - --proxy-headers=xforwarded
-        - --hostname-strict=false
         env:
         - name: KC_DB
           value: postgres
@@ -105,9 +102,13 @@ spec:
           value: keycloak
         - name: KC_DB_PASSWORD
           value: keycloak123
-        - name: KC_PROXY
-          value: edge
+        - name: KC_PROXY_HEADERS
+          value: "xforwarded"
         - name: KC_HTTP_ENABLED
+          value: "true"
+        - name: KC_HOSTNAME_STRICT
+          value: "false"
+        - name: KC_HEALTH_ENABLED
           value: "true"
         ports:
         - containerPort: 8080
@@ -121,19 +122,21 @@ spec:
           limits:
             memory: "2Gi"
             cpu: "2000m"
+        startupProbe:
+          httpGet:
+            path: /health/started
+            port: 9000
+          periodSeconds: 1
+          failureThreshold: 600
         readinessProbe:
           httpGet:
             path: /health/ready
-            port: 8080
-          initialDelaySeconds: 60
+            port: 9000
           periodSeconds: 10
-          timeoutSeconds: 5
           failureThreshold: 3
-        # livenessProbe:
-        #   httpGet:
-        #     path: /health/live
-        #     port: 9000 # The management port
-        #   initialDelaySeconds: 120 # Adjust based on your startup time
-        #   periodSeconds: 15
-        #   timeoutSeconds: 5
-        #   failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 9000
+          periodSeconds: 10
+          failureThreshold: 3
