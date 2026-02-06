@@ -15,7 +15,7 @@ spec:
         hostnames:
         - mail.test.net
         admin:
-          extraEnv:
+          extraEnvVars:
           - name: I_KNOW_MY_SETUP_DOESNT_FIT_REQUIREMENTS_AND_WONT_FILE_ISSUES_WITHOUT_PATCHES
             value: "1"
         ingress:
