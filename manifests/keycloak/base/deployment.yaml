@@ -110,6 +110,10 @@ spec:
           value: "false"
         - name: KC_HEALTH_ENABLED
           value: "true"
+        - name: KC_BOOTSTRAP_ADMIN_USERNAME
+          value: "admin"
+        - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+          value: "admin"
         ports:
         - containerPort: 8080
           name: http
