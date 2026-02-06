@@ -5,6 +5,7 @@ resources:
   - applications/certa.yaml
   - applications/cloudnativepg-operator.yaml
   - applications/github-runner.yaml
+  - applications/keycloak.yaml
   - applications/ollama.yaml
   - applications/pgadmin.yaml
   - applications/postgresql.yaml

@@ -19,6 +19,10 @@ patches:
     target:
       kind: Application
       name: github-runner
+  - path: patches/keycloak.yaml
+    target:
+      kind: Application
+      name: keycloak
   - path: patches/rancher.yaml
     target:
       kind: Application
