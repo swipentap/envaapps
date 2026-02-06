@@ -8,6 +8,7 @@ resources:
   - applications/keycloak.yaml
   - applications/ollama.yaml
   - applications/pgadmin.yaml
+  - applications/plane.yaml
   - applications/postgresql.yaml
   - applications/rancher.yaml
   - applications/sins.yaml
