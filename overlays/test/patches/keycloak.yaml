@@ -6,3 +6,4 @@ metadata:
 spec:
   source:
     path: manifests/keycloak/overlays/test
+    kustomize: {}
