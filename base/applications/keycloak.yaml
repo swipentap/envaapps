@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/swipentap/envaapps
     targetRevision: dev
-    path: manifests/keycloak
+    path: manifests/keycloak/base
     directory:
       recurse: true
   destination:
