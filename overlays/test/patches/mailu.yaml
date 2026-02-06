@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mailu
+  namespace: argocd
+spec:
+  source:
+    repoURL: https://mailu.github.io/helm-charts/
+    chart: mailu
+    targetRevision: "2"
+    helm:
+      releaseName: mailu
+      values: |
+        domain: test.net
+        hostnames:
+        - mail.test.net
+        ingress:
+          enabled: true
+          className: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web,websecure

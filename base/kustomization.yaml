@@ -6,6 +6,7 @@ resources:
   - applications/cloudnativepg-operator.yaml
   - applications/github-runner.yaml
   - applications/keycloak.yaml
+  - applications/mailu.yaml
   - applications/ollama.yaml
   - applications/pgadmin.yaml
   - applications/plane.yaml

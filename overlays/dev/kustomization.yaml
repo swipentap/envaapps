@@ -27,6 +27,10 @@ patches:
     target:
       kind: Application
       name: rancher
+  - path: patches/mailu.yaml
+    target:
+      kind: Application
+      name: mailu
   - path: patches/pgadmin.yaml
     target:
       kind: Application
