@@ -13,7 +13,7 @@ spec:
     targetRevision: 2.13.1
     helm:
       releaseName: rancher
-      values: |
+      valuesObject:
         hostname: rancher.prod.net
         ingress:
           enabled: true
@@ -24,11 +24,11 @@ spec:
         replicas: 1
         bootstrapPassword: admin
         extraEnv:
-        - name: CATTLE_BOOTSTRAP_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: bootstrap-secret
-              key: bootstrapPassword
+          - name: CATTLE_BOOTSTRAP_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: bootstrap-secret
+                key: bootstrapPassword
         global:
           cattle:
             systemDefaultRegistry: ""

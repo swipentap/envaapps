@@ -5,32 +5,10 @@ metadata:
   namespace: argocd
 spec:
   source:
-    repoURL: https://mailu.github.io/helm-charts/
-    chart: mailu
-    targetRevision: "2"
     helm:
-      releaseName: mailu
-      values: |
+      valuesObject:
         domain: test.net
         hostnames:
-        - mail.test.net
+          - mail.test.net
         initialAccount:
-          enabled: true
-          username: admin
           domain: test.net
-          password: ""
-          mode: update
-        admin:
-          extraEnvVars:
-          - name: I_KNOW_MY_SETUP_DOESNT_FIT_REQUIREMENTS_AND_WONT_FILE_ISSUES_WITHOUT_PATCHES
-            value: "1"
-        ingress:
-          enabled: true
-          className: traefik
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-        front:
-          service:
-            annotations:
-              traefik.ingress.kubernetes.io/service.serversscheme: "https"
-              traefik.ingress.kubernetes.io/service.serverstransport: "mailu-front-insecure@kubernetescrd"

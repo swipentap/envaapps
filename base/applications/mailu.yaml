@@ -13,21 +13,30 @@ spec:
     targetRevision: "2"
     helm:
       releaseName: mailu
-      values: |
+      valuesObject:
         domain: prod.net
         hostnames:
-        - mail.prod.net
+          - mail.prod.net
+        initialAccount:
+          enabled: true
+          username: admin
+          domain: prod.net
+          password: ""
+          mode: update
         admin:
           extraEnvVars:
-          - name: I_KNOW_MY_SETUP_DOESNT_FIT_REQUIREMENTS_AND_WONT_FILE_ISSUES_WITHOUT_PATCHES
-            value: "1"
+            - name: I_KNOW_MY_SETUP_DOESNT_FIT_REQUIREMENTS_AND_WONT_FILE_ISSUES_WITHOUT_PATCHES
+              value: "1"
         ingress:
           enabled: true
           className: traefik
           annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-        # cert-manager / TLS: set tlsFlavor or existing secret per your cluster
-        # persistence, database, and initial admin are chart defaults; override as needed
+        front:
+          service:
+            annotations:
+              traefik.ingress.kubernetes.io/service.serversscheme: "https"
+              traefik.ingress.kubernetes.io/service.serverstransport: "mailu-front-insecure@kubernetescrd"
   destination:
     server: https://kubernetes.default.svc
     namespace: mailu
