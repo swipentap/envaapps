@@ -1,0 +1,9 @@
+# Lets Traefik connect to mailu-front:443 (HTTPS) when the front's TLS cert
+# is for mail.dev.net, not for the service DNS name (hostname verification would fail).
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: front-insecure
+  namespace: mailu
+spec:
+  insecureSkipVerify: true

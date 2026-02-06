@@ -23,3 +23,8 @@ spec:
           className: traefik
           annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+        front:
+          service:
+            annotations:
+              traefik.ingress.kubernetes.io/service.serversscheme: "https"
+              traefik.ingress.kubernetes.io/service.serverstransport: "mailu-front-insecure@kubernetescrd"
