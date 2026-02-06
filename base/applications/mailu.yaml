@@ -41,8 +41,3 @@ spec:
   - kind: Ingress
     jsonPointers:
       - /status
-  # Secret created by mailu-tls (manifests/mailu); mailu Helm only references it via existingSecret
-  - group: ""
-    kind: Secret
-    name: mailu-initial-account
-    namespace: mailu
