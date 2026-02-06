@@ -6,3 +6,4 @@ resources:
   - issuer.yaml
   - certificate.yaml
   - serverstransport.yaml
+  - initial-account-secret.yaml

@@ -14,6 +14,13 @@ spec:
         domain: dev.net
         hostnames:
         - mail.dev.net
+        initialAccount:
+          enabled: true
+          username: admin
+          domain: dev.net
+          existingSecret: mailu-initial-account
+          existingSecretPasswordKey: initial-account-password
+          mode: update
         admin:
           extraEnvVars:
           - name: I_KNOW_MY_SETUP_DOESNT_FIT_REQUIREMENTS_AND_WONT_FILE_ISSUES_WITHOUT_PATCHES
