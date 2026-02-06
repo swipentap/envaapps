@@ -7,6 +7,10 @@ spec:
   source:
     helm:
       values: |
+        image:
+          registry: quay.io
+          repository: keycloak/keycloak
+          tag: "24.0.5"
         postgresql:
           enabled: false
         externalDatabase:
