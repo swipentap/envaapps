@@ -7,8 +7,6 @@ spec:
   source:
     helm:
       values: |
-        image:
-          tag: 22.0.5-debian-12-r0
         postgresql:
           enabled: false
         externalDatabase:
