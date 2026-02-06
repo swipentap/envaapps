@@ -18,8 +18,7 @@ spec:
           enabled: true
           username: admin
           domain: dev.net
-          existingSecret: mailu-initial-account
-          existingSecretPasswordKey: initial-account-password
+          password: ""
           mode: update
         admin:
           extraEnvVars:
