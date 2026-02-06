@@ -17,7 +17,7 @@ spec:
         planeVersion: "v1.2.1"
         ingress:
           enabled: true
-          appHost: "plane.dev.net"
+          appHost: "plane.prod.net"
           minioHost: ""
           ingressClass: traefik
           ingress_annotations:
@@ -36,7 +36,7 @@ spec:
           local_setup: true
   - repoURL: https://github.com/swipentap/envaapps
     path: manifests/plane/db-init
-    targetRevision: dev
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: plane-ce

@@ -5,4 +5,8 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/swipentap/envaapps
+    targetRevision: test
     path: manifests/github-runner-test
+    directory:
+      recurse: true

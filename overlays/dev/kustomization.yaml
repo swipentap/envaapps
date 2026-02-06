@@ -35,3 +35,7 @@ patches:
     target:
       kind: Application
       name: sonarqube
+  - path: patches/plane.yaml
+    target:
+      kind: Application
+      name: plane

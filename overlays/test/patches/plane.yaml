@@ -3,10 +3,7 @@ kind: Application
 metadata:
   name: plane
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
   sources:
   - repoURL: https://helm.plane.so/
     chart: plane-ce
@@ -17,7 +14,7 @@ spec:
         planeVersion: "v1.2.1"
         ingress:
           enabled: true
-          appHost: "plane.prod.net"
+          appHost: "plane.test.net"
           minioHost: ""
           ingressClass: traefik
           ingress_annotations:
@@ -36,17 +33,4 @@ spec:
           local_setup: true
   - repoURL: https://github.com/swipentap/envaapps
     path: manifests/plane/db-init
-    targetRevision: main
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: plane-ce
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
-  ignoreDifferences:
-  - kind: Ingress
-    jsonPointers:
-      - /status
+    targetRevision: test
