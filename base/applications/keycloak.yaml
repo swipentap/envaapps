@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://codecentric.github.io/helm-charts
     chart: keycloak
-    targetRevision: 25.0.0
+    targetRevision: 18.10.0
     helm:
       releaseName: keycloak
       values: |
@@ -21,7 +21,7 @@ spec:
         - --optimized
         - --proxy-headers
         - --http-relative-path=/
-        extraEnv: |
+        extraEnv:
           - name: KC_PROXY
             value: "edge"
           - name: KC_DB
@@ -53,7 +53,7 @@ spec:
           - hosts:
             - auth.prod.net
             secretName: tls-prod-net-wildcard
-        extraInitContainers: |
+        extraInitContainers:
           - name: db-init
             image: postgres:15-alpine
             command:

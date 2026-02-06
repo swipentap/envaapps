@@ -14,7 +14,7 @@ spec:
         - --optimized
         - --proxy-headers
         - --http-relative-path=/
-        extraEnv: |
+        extraEnv:
           - name: KC_PROXY
             value: "edge"
           - name: KC_DB
@@ -46,7 +46,7 @@ spec:
           - hosts:
             - auth.dev.net
             secretName: tls-dev-net-wildcard
-        extraInitContainers: |
+        extraInitContainers:
           - name: db-init
             image: postgres:15-alpine
             command:
