@@ -14,14 +14,16 @@ spec:
     helm:
       releaseName: keycloak
       values: |
-        image: quay.io/keycloak/keycloak:24.0.5
+        image:
+          repository: quay.io/keycloak/keycloak
+          tag: "24.0.5"
         command:
         - /opt/keycloak/bin/kc.sh
         - start
         - --optimized
         - --proxy-headers
         - --http-relative-path=/
-        extraEnv:
+        extraEnv: |
           - name: KC_PROXY
             value: "edge"
           - name: KC_DB
@@ -53,7 +55,7 @@ spec:
           - hosts:
             - auth.prod.net
             secretName: tls-prod-net-wildcard
-        extraInitContainers:
+        extraInitContainers: |
           - name: db-init
             image: postgres:15-alpine
             command:
