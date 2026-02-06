@@ -89,6 +89,7 @@ spec:
         image: keycloak/keycloak:latest
         args:
         - start
+        - --optimized
         - --proxy-headers=xforwarded
         - --hostname-strict=false
         env:
@@ -128,11 +129,11 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
-        livenessProbe:
-          httpGet:
-            path: /health/live
-            port: 9000 # The management port
-          initialDelaySeconds: 120 # Adjust based on your startup time
-          periodSeconds: 15
-          timeoutSeconds: 5
-          failureThreshold: 3
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health/live
+        #     port: 9000 # The management port
+        #   initialDelaySeconds: 120 # Adjust based on your startup time
+        #   periodSeconds: 15
+        #   timeoutSeconds: 5
+        #   failureThreshold: 3
