@@ -15,6 +15,15 @@ spec:
         hostnames:
         - mail.test.net
         admin:
+          dnsPolicy: "None"
+          dnsConfig:
+            nameservers:
+            - 1.1.1.1
+            - 10.43.0.10
+            searches:
+            - mailu.svc.cluster.local
+            - svc.cluster.local
+            - cluster.local
           extraEnvVars:
           - name: I_KNOW_MY_SETUP_DOESNT_FIT_REQUIREMENTS_AND_WONT_FILE_ISSUES_WITHOUT_PATCHES
             value: "1"
