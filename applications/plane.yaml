@@ -24,6 +24,8 @@ spec:
             traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
         ssl:
           createIssuer: false
+        external_secrets:
+          live_env_existingSecret: "plane-app-live-secrets"
         postgres:
           local_setup: false
         env:
