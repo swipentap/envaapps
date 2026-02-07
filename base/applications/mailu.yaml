@@ -21,7 +21,7 @@ spec:
           enabled: true
           username: admin
           domain: prod.net
-          password: ""
+          password: "admin"
           mode: update
         admin:
           extraEnvVars:
