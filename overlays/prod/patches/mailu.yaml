@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mailu
+  namespace: argocd
+spec:
+  source:
+    helm:
+      valuesObject:
+        domain: prod.net
+        hostnames:
+          - mail.prod.net
+        initialAccount:
+          domain: prod.net
