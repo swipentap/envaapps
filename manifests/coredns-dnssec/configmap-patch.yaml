@@ -31,7 +31,7 @@ data:
     }
     import /etc/coredns/custom/*.server
   NodeHosts: |
-    10.11.4.11 k3s-control
-    10.11.4.12 k3s-worker-1
-    10.11.4.13 k3s-worker-2
-    10.11.4.14 k3s-worker-3
+    10.11.2.11 k3s-control
+    10.11.2.12 k3s-worker-1
+    10.11.2.13 k3s-worker-2
+    10.11.2.14 k3s-worker-3

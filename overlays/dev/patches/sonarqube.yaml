@@ -5,6 +5,21 @@ metadata:
   namespace: argocd
 spec:
   source:
-    repoURL: https://github.com/swipentap/envaapps
     targetRevision: dev
-    path: manifests/sonarqube/overlays/dev
+    path: manifests/sonarqube
+    kustomize:
+      patches:
+        - target:
+            kind: Ingress
+            name: sonarqube-ingress
+          patch: |
+            - op: replace
+              path: /spec/rules/0/host
+              value: sonar.dev.net
+            - op: replace
+              path: /spec/tls/0/hosts
+              value:
+                - sonar.dev.net
+            - op: replace
+              path: /spec/tls/0/secretName
+              value: tls-dev-net-wildcard

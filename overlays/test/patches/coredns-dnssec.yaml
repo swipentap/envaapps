@@ -6,3 +6,16 @@ metadata:
 spec:
   source:
     targetRevision: test
+    kustomize:
+      patches:
+        - target:
+            kind: ConfigMap
+            name: coredns
+          patch: |
+            - op: replace
+              path: /data/NodeHosts
+              value: |
+                10.11.3.11 k3s-control
+                10.11.3.12 k3s-worker-1
+                10.11.3.13 k3s-worker-2
+                10.11.3.14 k3s-worker-3

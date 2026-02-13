@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/swipentap/envaapps
     targetRevision: main
-    path: manifests/keycloak/base
+    path: manifests/keycloak
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak

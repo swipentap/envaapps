@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/swipentap/envaapps
     targetRevision: main
-    path: manifests/sonarqube/overlays/prod
+    path: manifests/sonarqube
   destination:
     server: https://kubernetes.default.svc
     namespace: sonarqube

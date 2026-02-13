@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/swipentap/envaapps
     targetRevision: main
-    path: manifests/pgadmin/overlays/prod
+    path: manifests/pgadmin
   destination:
     server: https://kubernetes.default.svc
     namespace: pgadmin
