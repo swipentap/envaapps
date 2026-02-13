@@ -49,6 +49,7 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - Replace=true
   ignoreDifferences:
   - kind: Ingress
     jsonPointers:

@@ -6,20 +6,4 @@ metadata:
 spec:
   source:
     targetRevision: dev
-    path: manifests/pgadmin
-    kustomize:
-      patches:
-        - target:
-            kind: Ingress
-            name: pgadmin-ingress
-          patch: |
-            - op: replace
-              path: /spec/rules/0/host
-              value: pgadmin.dev.net
-            - op: replace
-              path: /spec/tls/0/hosts
-              value:
-                - pgadmin.dev.net
-            - op: replace
-              path: /spec/tls/0/secretName
-              value: tls-dev-net-wildcard
+    path: overlays/dev/pgadmin

@@ -6,20 +6,4 @@ metadata:
 spec:
   source:
     targetRevision: test
-    path: manifests/sonarqube
-    kustomize:
-      patches:
-        - target:
-            kind: Ingress
-            name: sonarqube-ingress
-          patch: |
-            - op: replace
-              path: /spec/rules/0/host
-              value: sonar.test.net
-            - op: replace
-              path: /spec/tls/0/hosts
-              value:
-                - sonar.test.net
-            - op: replace
-              path: /spec/tls/0/secretName
-              value: tls-test-net-wildcard
+    path: overlays/test/sonarqube

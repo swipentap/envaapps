@@ -6,20 +6,4 @@ metadata:
 spec:
   source:
     targetRevision: test
-    path: manifests/keycloak
-    kustomize:
-      patches:
-        - target:
-            kind: Ingress
-            name: keycloak-ingress
-          patch: |
-            - op: replace
-              path: /spec/rules/0/host
-              value: auth.test.net
-            - op: replace
-              path: /spec/tls/0/hosts
-              value:
-                - auth.test.net
-            - op: replace
-              path: /spec/tls/0/secretName
-              value: tls-test-net-wildcard
+    path: overlays/test/keycloak
