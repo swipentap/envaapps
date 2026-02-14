@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://mailu.github.io/helm-charts/
+    repoURL: https://swipentap.github.io/charts
     chart: mailu
-    targetRevision: "2"
+    targetRevision: "2.6.3"
     helm:
       releaseName: mailu
       valuesObject:
@@ -37,6 +37,49 @@ spec:
             annotations:
               traefik.ingress.kubernetes.io/service.serversscheme: "https"
               traefik.ingress.kubernetes.io/service.serverstransport: "mailu-front-insecure@kubernetescrd"
+        customTls:
+          enabled: true
+          issuer:
+            name: mailu-selfsigned
+          certificate:
+            name: mailu-certificates
+            secretName: mailu-certificates
+            dnsNames:
+            - mail.prod.net
+            - mail.dev.net
+            - mail.test.net
+          serversTransport:
+            name: front-insecure
+        customCoredns:
+          enabled: true
+          corefile: |
+            .:53 {
+                errors
+                health
+                ready
+                kubernetes cluster.local in-addr.arpa ip6.arpa {
+                  pods insecure
+                  fallthrough in-addr.arpa ip6.arpa
+                }
+                hosts /etc/coredns/NodeHosts {
+                  ttl 60
+                  reload 15s
+                  fallthrough
+                }
+                prometheus :9153
+                cache 30
+                loop
+                reload
+                loadbalance
+                import /etc/coredns/custom/*.override
+                forward . 8.8.8.8 8.8.4.4
+            }
+            import /etc/coredns/custom/*.server
+          nodeHosts: |
+            10.11.2.11 k3s-control
+            10.11.2.12 k3s-worker-1
+            10.11.2.13 k3s-worker-2
+            10.11.2.14 k3s-worker-3
   destination:
     server: https://kubernetes.default.svc
     namespace: mailu
@@ -46,6 +89,7 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true
   ignoreDifferences:
   - kind: Ingress
     jsonPointers:
