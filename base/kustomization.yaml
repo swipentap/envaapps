@@ -3,12 +3,10 @@ kind: Kustomization
 resources:
   - applications/cert-manager.yaml
   - applications/certa.yaml
-  - applications/cloudnativepg-operator.yaml
   - applications/github-runner.yaml
   - applications/keycloak.yaml
   - applications/mailu.yaml
   - applications/ollama.yaml
-  - applications/pgadmin.yaml
   - applications/plane.yaml
   - applications/postgresql.yaml
   - applications/rancher.yaml

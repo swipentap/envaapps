@@ -31,10 +31,10 @@ patches:
     target:
       kind: Application
       name: mailu
-  - path: patches/pgadmin.yaml
+  - path: patches/postgresql.yaml
     target:
       kind: Application
-      name: pgadmin
+      name: postgresql
   - path: patches/sonarqube.yaml
     target:
       kind: Application
