@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/swipentap/charts
     path: swipentap/plane-ce
-    targetRevision: main
+    targetRevision: 99b3067
     helm:
       releaseName: plane-app
       valuesObject:
