@@ -8,9 +8,39 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/swipentap/envaapps
+    repoURL: https://github.com/swipentap/charts
+    path: swipentap/keycloak
     targetRevision: main
-    path: manifests/keycloak
+    helm:
+      releaseName: keycloak
+      valuesObject:
+        postgresql:
+          enabled: false
+        externalDatabase:
+          enabled: true
+          host: postgresql-rw.postgresql.svc.cluster.local
+          port: "5432"
+          database: keycloak
+          username: keycloak
+          password: keycloak123
+          adminPassword: postgres123
+        ingress:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          rules:
+            - host: auth.prod.net
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - auth.prod.net
+              secretName: tls-prod-net-wildcard
+        keycloakBootstrapAdmin:
+          username: "admin"
+          password: "admin"
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak
@@ -21,6 +51,7 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
+    - Replace=true
   ignoreDifferences:
   - kind: Ingress
     jsonPointers:

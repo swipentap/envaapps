@@ -8,9 +8,41 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/swipentap/envaapps
+    repoURL: https://github.com/swipentap/charts
+    path: swipentap/sonarqube
     targetRevision: main
-    path: manifests/sonarqube
+    helm:
+      releaseName: sonarqube
+      valuesObject:
+        community:
+          enabled: true
+        ingress-nginx:
+          enabled: false
+        ingress:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+          hosts:
+            - name: sonarqube.prod.net
+          tls:
+            - secretName: tls-prod-net-wildcard
+              hosts:
+                - sonarqube.prod.net
+        jdbcOverwrite:
+          enabled: true
+          jdbcUrl: "jdbc:postgresql://postgresql-rw.postgresql.svc.cluster.local:5432/sonar"
+          jdbcUsername: sonarqube
+          jdbcPassword: postgres123
+        externalDatabase:
+          enabled: true
+          host: postgresql-rw.postgresql.svc.cluster.local
+          port: "5432"
+          database: sonar
+          username: sonarqube
+          password: postgres123
+          adminPassword: postgres123
+        monitoringPasscode: "sonar-monitor"
   destination:
     server: https://kubernetes.default.svc
     namespace: sonarqube
@@ -20,6 +52,7 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - Replace=true
   ignoreDifferences:
   - kind: Ingress
     jsonPointers:

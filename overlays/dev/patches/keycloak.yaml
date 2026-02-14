@@ -5,5 +5,15 @@ metadata:
   namespace: argocd
 spec:
   source:
-    targetRevision: dev
-    path: overlays/dev/keycloak
+    helm:
+      valuesObject:
+        ingress:
+          rules:
+            - host: auth.dev.net
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - auth.dev.net
+              secretName: tls-dev-net-wildcard

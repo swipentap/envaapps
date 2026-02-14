@@ -5,5 +5,12 @@ metadata:
   namespace: argocd
 spec:
   source:
-    targetRevision: test
-    path: overlays/test/sonarqube
+    helm:
+      valuesObject:
+        ingress:
+          hosts:
+            - name: sonarqube.test.net
+          tls:
+            - secretName: tls-test-net-wildcard
+              hosts:
+                - sonarqube.test.net
