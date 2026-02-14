@@ -10,10 +10,29 @@ spec:
   source:
     repoURL: https://swipentap.github.io/charts
     chart: mailu
-    targetRevision: "2.6.7-92"
+    targetRevision: "2.6.7-93"
     helm:
       releaseName: mailu
       valuesObject:
+        mariadb:
+          enabled: false
+        postgresql:
+          enabled: false
+        externalDatabase:
+          enabled: true
+          type: postgresql
+          host: postgresql-rw.postgresql.svc.cluster.local
+          port: "5432"
+          database: mailu
+          username: mailu
+          password: mailu123
+          adminPassword: postgres123
+        global:
+          database:
+            roundcube:
+              database: roundcube
+              username: roundcube
+              password: roundcube123
         domain: prod.net
         hostnames:
           - mail.prod.net
@@ -29,10 +48,7 @@ spec:
               value: "1"
         postfix:
           updateStrategy:
-            type: RollingUpdate
-            rollingUpdate:
-              maxSurge: "25%"
-              maxUnavailable: "25%"
+            type: Recreate
         ingress:
           enabled: true
           className: traefik
