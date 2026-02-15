@@ -19,10 +19,6 @@ patches:
     target:
       kind: Application
       name: github-runner
-  - path: patches/keycloak.yaml
-    target:
-      kind: Application
-      name: keycloak
   - path: patches/rancher.yaml
     target:
       kind: Application
@@ -35,11 +31,3 @@ patches:
     target:
       kind: Application
       name: postgresql
-  - path: patches/sonarqube.yaml
-    target:
-      kind: Application
-      name: sonarqube
-  - path: patches/plane.yaml
-    target:
-      kind: Application
-      name: plane
