@@ -9,4 +9,5 @@ resources:
   - applications/postgresql.yaml
   - applications/rancher.yaml
   - applications/sins.yaml
+  - applications/tls-secret.yaml
   - applications/traefik.yaml
