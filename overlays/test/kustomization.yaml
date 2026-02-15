@@ -19,10 +19,6 @@ patches:
     target:
       kind: Application
       name: github-runner
-  - path: patches/keycloak.yaml
-    target:
-      kind: Application
-      name: keycloak
   - path: patches/rancher.yaml
     target:
       kind: Application
@@ -31,23 +27,7 @@ patches:
     target:
       kind: Application
       name: mailu
-  - path: patches/mailu-tls.yaml
+  - path: patches/postgresql.yaml
     target:
       kind: Application
-      name: mailu-tls
-  - path: patches/coredns-dnssec.yaml
-    target:
-      kind: Application
-      name: coredns-dnssec
-  - path: patches/pgadmin.yaml
-    target:
-      kind: Application
-      name: pgadmin
-  - path: patches/sonarqube.yaml
-    target:
-      kind: Application
-      name: sonarqube
-  - path: patches/plane.yaml
-    target:
-      kind: Application
-      name: plane
+      name: postgresql

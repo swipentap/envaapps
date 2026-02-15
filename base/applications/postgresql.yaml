@@ -8,14 +8,56 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/swipentap/envaapps
-    targetRevision: main
-    path: manifests/postgresql
-    directory:
-      recurse: true
+    repoURL: https://swipentap.github.io/charts
+    chart: postgresql
+    targetRevision: "1.0.0"
+    helm:
+      releaseName: postgresql
+      valuesObject:
+        cloudnative-pg: {}
+        customPostgresql:
+          enabled: true
+          namespace: postgresql
+          credentials:
+            username: postgres
+            password: postgres123
+          cluster:
+            instances: 3
+            storageSize: 20Gi
+            storageClass: local-path
+            maxConnections: "200"
+            sharedBuffers: "256MB"
+            effectiveCacheSize: "1GB"
+            maintenanceWorkMem: "64MB"
+            checkpointCompletionTarget: "0.9"
+            walBuffers: "16MB"
+            defaultStatisticsTarget: "100"
+            randomPageCost: "1.1"
+            effectiveIoConcurrency: "200"
+            workMem: "4MB"
+            minWalSize: "1GB"
+            maxWalSize: "4GB"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: 250m
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          nodePort: 30432
+          sonarqubeRolePassword: postgres123
+        customPgadmin:
+          enabled: true
+          namespace: pgadmin
+          adminEmail: admin@dev.net
+          adminPassword: admin
+          dbPassword: pgadmin123
+          ingress:
+            host: pgadmin.prod.net
+            tlsSecretName: tls-prod-net-wildcard
   destination:
     server: https://kubernetes.default.svc
-    namespace: postgresql
+    namespace: cnpg-system
   syncPolicy:
     automated:
       prune: true
@@ -24,6 +66,17 @@ spec:
     - CreateNamespace=true
     - ServerSideApply=true
   ignoreDifferences:
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      jsonPointers:
+      - /metadata/annotations
+      - /metadata/labels
+      - /metadata/generation
+      - /metadata/resourceVersion
+      - /metadata/uid
+      - /metadata/creationTimestamp
+      - /spec/conversion
+      - /spec/preserveUnknownFields
     - group: postgresql.cnpg.io
       kind: Cluster
       jsonPointers:

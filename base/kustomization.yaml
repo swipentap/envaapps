@@ -2,19 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - applications/cert-manager.yaml
-  - applications/coredns-dnssec.yaml
   - applications/certa.yaml
-  - applications/cloudnativepg-operator.yaml
   - applications/github-runner.yaml
-  - applications/keycloak.yaml
   - applications/mailu.yaml
-  - applications/mailu-tls.yaml
   - applications/ollama.yaml
-  - applications/pgadmin.yaml
-  - applications/plane.yaml
   - applications/postgresql.yaml
   - applications/rancher.yaml
   - applications/sins.yaml
-  - applications/sonarqube.yaml
   - applications/tls-secret.yaml
   - applications/traefik.yaml

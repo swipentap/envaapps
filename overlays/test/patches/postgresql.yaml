@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgresql
+  namespace: argocd
+spec:
+  source:
+    helm:
+      valuesObject:
+        customPgadmin:
+          ingress:
+            host: pgadmin.test.net
+            tlsSecretName: tls-test-net-wildcard

@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../manifests/keycloak/namespace.yaml
+  - ../../../manifests/keycloak/deployment.yaml
+  - ../../../manifests/keycloak/service.yaml
+  - ../../../manifests/keycloak/ingress.yaml
+patches:
+  - target:
+      kind: Ingress
+      name: keycloak-ingress
+    patch: |
+      - op: replace
+        path: /spec/rules/0/host
+        value: auth.test.net
+      - op: replace
+        path: /spec/tls/0/hosts
+        value:
+          - auth.test.net
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: tls-test-net-wildcard
