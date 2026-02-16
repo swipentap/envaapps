@@ -3,51 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
 patches:
-  - path: patches/sins.yaml
+  - path: root-apps-helm-values.yaml
     target:
       kind: Application
-      name: sins
-  - path: patches/certa.yaml
-    target:
-      kind: Application
-      name: certa
-  - path: patches/ollama.yaml
-    target:
-      kind: Application
-      name: ollama
-  - path: patches/github-runner.yaml
-    target:
-      kind: Application
-      name: github-runner
-  - path: patches/keycloak.yaml
-    target:
-      kind: Application
-      name: keycloak
-  - path: patches/rancher.yaml
-    target:
-      kind: Application
-      name: rancher
-  - path: patches/mailu.yaml
-    target:
-      kind: Application
-      name: mailu
-  - path: patches/mailu-tls.yaml
-    target:
-      kind: Application
-      name: mailu-tls
-  - path: patches/coredns-dnssec.yaml
-    target:
-      kind: Application
-      name: coredns-dnssec
-  - path: patches/pgadmin.yaml
-    target:
-      kind: Application
-      name: pgadmin
-  - path: patches/sonarqube.yaml
-    target:
-      kind: Application
-      name: sonarqube
-  - path: patches/plane.yaml
-    target:
-      kind: Application
-      name: plane
+      name: root-apps
