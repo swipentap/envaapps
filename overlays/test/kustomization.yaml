@@ -7,3 +7,7 @@ patches:
     target:
       kind: Application
       name: umbrella
+  - path: root-apps-source.yaml
+    target:
+      kind: Application
+      name: root-apps
