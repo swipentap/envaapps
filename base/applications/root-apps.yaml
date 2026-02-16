@@ -1,0 +1,20 @@
+# Root Application: syncs from the enva-umbrella Helm chart (creates child apps).
+# Managed from git via bootstrap; do not apply manually.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://swipentap.github.io/charts
+    chart: enva-umbrella
+    targetRevision: "1.0.0-125"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
