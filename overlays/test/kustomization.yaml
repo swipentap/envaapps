@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
 patches:
-  - path: root-apps-helm-values.yaml
+  - path: umbrella-helm-values.yaml
     target:
       kind: Application
-      name: root-apps
+      name: umbrella
