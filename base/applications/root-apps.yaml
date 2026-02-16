@@ -1,5 +1,5 @@
 # Root Application: syncs from the enva-umbrella Helm chart (creates child apps).
-# Managed from git via bootstrap; do not apply manually.
+# Base = prod. Enva applies overlays/<env> (dev/test/prod) so each cluster gets env-specific helm values.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -11,6 +11,24 @@ spec:
     repoURL: https://swipentap.github.io/charts
     chart: enva-umbrella
     targetRevision: "1.0.0-125"
+    helm:
+      values: |
+        global:
+          env: prod
+          domain: prod.net
+          tlsSecret: tls-prod-net-wildcard
+        mailu:
+          nodeHosts: |
+            10.11.2.11 k3s-control
+            10.11.2.12 k3s-worker-1
+            10.11.2.13 k3s-worker-2
+            10.11.2.14 k3s-worker-3
+        postgresql:
+          pgadminHost: pgadmin.prod.net
+        sins:
+          haproxyIp: "10.11.2.17"
+        rancher:
+          hostname: rancher.prod.net
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
