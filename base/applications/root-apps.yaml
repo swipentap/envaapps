@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/swipentap/envaapps
-    path: applications
+    path: overlays/prod
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
