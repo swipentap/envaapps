@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-mem0
+  namespace: mcp-mem0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-mem0
+  template:
+    metadata:
+      labels:
+        app: mcp-mem0
+    spec:
+      containers:
+        - name: mcp-mem0
+          image: ghcr.io/coleam00/mcp-mem0:main
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8050
+          envFrom:
+            - secretRef:
+                name: mcp-mem0-env
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: 100m
+            limits:
+              memory: "1Gi"
+              cpu: "1"

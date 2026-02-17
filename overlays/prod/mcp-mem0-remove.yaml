@@ -1,0 +1,6 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mcp-mem0
+  namespace: argocd
+$patch: delete
