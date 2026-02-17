@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-apps
+  namespace: argocd
+spec:
+  source:
+    helm:
+      values: |
+        global:
+          env: test
+          domain: test.net
+          tlsSecret: tls-test-net-wildcard
+        mailu:
+          nodeHosts: |
+            10.11.3.11 k3s-control
+            10.11.3.12 k3s-worker-1
+            10.11.3.13 k3s-worker-2
+            10.11.3.14 k3s-worker-3
+        postgresql:
+          pgadminHost: pgadmin.test.net
+        sins:
+          haproxyIp: "10.11.3.17"
+        rancher:
+          hostname: rancher.test.net

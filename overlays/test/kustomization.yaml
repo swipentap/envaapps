@@ -3,31 +3,11 @@ kind: Kustomization
 resources:
   - ../../base
 patches:
-  - path: patches/sins.yaml
+  - path: umbrella-helm-values.yaml
     target:
       kind: Application
-      name: sins
-  - path: patches/certa.yaml
+      name: umbrella
+  - path: root-apps-source.yaml
     target:
       kind: Application
-      name: certa
-  - path: patches/ollama.yaml
-    target:
-      kind: Application
-      name: ollama
-  - path: patches/github-runner.yaml
-    target:
-      kind: Application
-      name: github-runner
-  - path: patches/rancher.yaml
-    target:
-      kind: Application
-      name: rancher
-  - path: patches/mailu.yaml
-    target:
-      kind: Application
-      name: mailu
-  - path: patches/postgresql.yaml
-    target:
-      kind: Application
-      name: postgresql
+      name: root-apps

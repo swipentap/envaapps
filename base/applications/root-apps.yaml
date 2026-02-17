@@ -1,0 +1,18 @@
+# Root Application: syncs from envaapps git, applies umbrella and self (ArgoCD updates from git).
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/swipentap/envaapps
+    path: applications
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
