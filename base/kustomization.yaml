@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - applications/root-apps.yaml
   - applications/umbrella.yaml
+  - applications/letta.yaml

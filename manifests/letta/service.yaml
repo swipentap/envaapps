@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: letta
+  namespace: letta
+spec:
+  selector:
+    app: letta
+  ports:
+    - port: 8283
+      targetPort: 8283
+      name: http

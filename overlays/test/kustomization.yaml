@@ -11,3 +11,4 @@ patches:
     target:
       kind: Application
       name: root-apps
+  - path: letta-remove.yaml
