@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://swipentap.github.io/charts
     chart: enva-umbrella
-    targetRevision: "1.0.0-139"
+    targetRevision: "1.0.0-140"
     helm:
       values: |
         global:
