@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - applications/root-apps.yaml
   - applications/umbrella.yaml
-  - applications/mcp-mem0.yaml
