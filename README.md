@@ -21,7 +21,7 @@ To have ArgoCD manage these applications, use a root Application (app-of-apps).
 
 ### Option A: Umbrella Helm chart (recommended)
 
-The root Application is in `base/applications/root-apps.yaml`. It syncs from the **enva-umbrella** Helm chart (published at `https://swipentap.github.io/charts`). The umbrella chart renders all child Applications (cert-manager, certa, github-runner, mailu, ollama, postgresql, rancher, sins, tls-secret, traefik) with env-specific values.
+The root Application is in `base/applications/root-apps.yaml`. It syncs from the **enva-umbrella** Helm chart (published at `https://swipentap.github.io/charts`). The umbrella chart renders all child Applications (cert-manager, certa, code-server, github-runner, mailu, ollama, postgresql, rancher, sins, tls-secret, traefik) with env-specific values.
 
 - **Manifest:** `base/applications/root-apps.yaml` (prod). Overlays patch helm values per env.
 - **Apply:** Enva "install argocd apps" uses path `overlays/<env>` and target_revision from the environment (dev/test/main) so each cluster gets root-apps with the correct helm values (domain, tlsSecret, mailu nodeHosts, postgresql pgadminHost, sins haproxyIp, rancher hostname).
