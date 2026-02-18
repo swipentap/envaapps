@@ -23,3 +23,8 @@ spec:
           haproxyIp: "10.11.3.17"
         rancher:
           hostname: rancher.test.net
+        githubRunner:
+          group: k3s-test
+          labels:
+            - k3s
+            - k3s-test
