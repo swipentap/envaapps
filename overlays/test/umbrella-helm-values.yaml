@@ -28,3 +28,9 @@ spec:
           labels:
             - k3s
             - k3s-test
+        freeipa:
+          hostname: ipa.test.net
+          realm: TEST.NET
+          domain: test.net
+          credentialsSecret: freeipa-credentials
+          ingressTlsSecret: tls-test-net-wildcard
