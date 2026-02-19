@@ -29,3 +29,9 @@ spec:
           labels:
             - k3s
             - k3s-dev
+        freeipa:
+          hostname: ipa.dev.net
+          realm: DEV.NET
+          domain: dev.net
+          credentialsSecret: freeipa-credentials
+          ingressTlsSecret: tls-dev-net-wildcard
