@@ -35,4 +35,5 @@ spec:
           domain: dev.net
           credentialsSecret: freeipa-credentials
           ingressTlsSecret: tls-dev-net-wildcard
+          adminPassword: "G86uyfdk"
         sonarqubeChartRevision: "2026.2.0-176"
