@@ -38,4 +38,4 @@ spec:
           adminPassword: "G86uyfdk"
           ldapServiceUserPassword: "KidaSvc2024!"
         sonarqubeChartRevision: "2026.2.0-176"
-        keycloakOperatorChartRevision: "1.0.0-196"
+        keycloakOperatorChartRevision: "1.0.0-197"
