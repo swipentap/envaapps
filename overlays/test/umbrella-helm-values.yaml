@@ -34,3 +34,4 @@ spec:
           domain: test.net
           credentialsSecret: freeipa-credentials
           ingressTlsSecret: tls-test-net-wildcard
+        keycloakOperatorChartRevision: "1.0.0-202"
