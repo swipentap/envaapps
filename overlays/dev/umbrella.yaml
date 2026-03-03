@@ -38,4 +38,4 @@ spec:
         eclipseCheOAuthSecret: "eJbBfIK2tHK2oT3n7Ff2HTZAWoeFI6C6"
 
         sonarqubeChartRevision: "2026.2.0-176"
-        keycloakOperatorChartRevision: "1.0.0-211"
+        keycloakOperatorChartRevision: "1.0.0-227"
