@@ -32,6 +32,10 @@ spec:
           haproxyIp: "10.11.2.17"
         rancher:
           hostname: rancher.prod.net
+        vault:
+          url: "http://10.11.1.8:30200"
+          kubeAuthPath: "kubernetes"
+          role: "external-secrets"
         githubRunner:
           group: k3s-prod
           labels:
