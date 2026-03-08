@@ -10,12 +10,12 @@ spec:
   source:
     repoURL: https://swipentap.github.io/charts
     chart: enva-umbrella
-    targetRevision: "1.0.0-228"
+    targetRevision: "1.0.0-229"
     helm:
       valuesObject:
-        freeipaChartRevision: "1.0.8-228"
-        langflowChartRevision: "0.1.0-228"
-        vaultSecretsChartRevision: "0.1.0-228"
+        freeipaChartRevision: "1.0.8-229"
+        langflowChartRevision: "0.1.0-229"
+        vaultSecretsChartRevision: "0.1.0-229"
         global:
           env: prod
           domain: prod.net
