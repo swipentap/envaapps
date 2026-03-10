@@ -1,4 +1,4 @@
-# Deploys enva-umbrella Helm chart (creates child apps).
+# Deploys umbrella Helm chart from Unbrella repo (creates child apps).
 # Helm values patched per env by overlays.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://swipentap.github.io/charts
-    chart: enva-umbrella
-    targetRevision: "1.0.0-244"
+    repoURL: https://github.com/judyandiealvarez/Unbrella.git
+    path: .
+    targetRevision: main
     helm:
       valuesObject:
         freeipaChartRevision: "1.0.8-244"
