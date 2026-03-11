@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://swipentap.github.io/Umbrella
     path: .
-    targetRevision: "1.0.0-268"
+    targetRevision: "1.0.0-271"
     helm:
       valuesObject:
         freeipaChartRevision: "1.0.8-244"
