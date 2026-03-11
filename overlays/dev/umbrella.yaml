@@ -35,8 +35,6 @@ spec:
           credentialsSecret: freeipa-credentials
           ingressTlsSecret: tls-dev-net-wildcard
 
-        eclipseCheOAuthSecret: "eJbBfIK2tHK2oT3n7Ff2HTZAWoeFI6C6"
-
         sonarqubeChartRevision: "2026.2.0-176"
         keycloakOperatorChartRevision: "1.0.0-244"
         vault:
