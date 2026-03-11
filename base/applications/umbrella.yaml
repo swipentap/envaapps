@@ -53,3 +53,5 @@ spec:
   syncPolicy:
     automated:
       selfHeal: true
+    syncOptions:
+      - Prune=true
