@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://swipentap.github.io/Umbrella
-    path: .
+    chart: enva-umbrella
     targetRevision: "1.0.0-272"
     helm:
       valuesObject:
