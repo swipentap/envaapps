@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/judyandiealvarez/Unbrella.git
+    repoURL: https://swipentap.github.io/Umbrella
     path: .
-    targetRevision: main
+    targetRevision: "1.0.0-263"
     helm:
       valuesObject:
         freeipaChartRevision: "1.0.8-244"
