@@ -28,8 +28,13 @@ spec:
             10.11.2.14 k3s-worker-3
         postgresql:
           pgadminHost: pgadmin.prod.net
+        certa:
+          postgresql:
+            enabled: false
         sins:
           haproxyIp: "10.11.2.17"
+          postgresql:
+            enabled: false
         rancher:
           hostname: rancher.prod.net
         vault:
