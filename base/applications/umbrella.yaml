@@ -28,11 +28,29 @@ spec:
             10.11.2.14 k3s-worker-3
         postgresql:
           pgadminHost: pgadmin.prod.net
+          customPgadmin:
+            ingress:
+              host: pgadmin.prod.net
+              tlsSecretName: tls-prod-net-wildcard
         certa:
+          domain: prod.net
+          certa:
+            ingress:
+              tls:
+                - hosts: ["certa.prod.net"]
+                  secretName: tls-prod-net-wildcard
           postgresql:
             enabled: false
         sins:
           haproxyIp: "10.11.2.17"
+          webui:
+            ingress:
+              hosts:
+                - host: "ns.prod.net"
+                  paths: [{ path: "/", pathType: Prefix }]
+              tls:
+                - hosts: ["ns.prod.net"]
+                  secretName: tls-prod-net-wildcard
           postgresql:
             enabled: false
         rancher:
@@ -52,6 +70,69 @@ spec:
           domain: prod.net
           credentialsSecret: freeipa-credentials
           ingressTlsSecret: tls-prod-net-wildcard
+        keycloak-operator:
+          hostname: auth.prod.net
+          tlsSecret: tls-prod-net-wildcard
+        mailu:
+          hostnames: [mail.prod.net]
+          ingress:
+            existingSecret: tls-prod-net-wildcard
+        harbor:
+          expose:
+            ingress:
+              hosts:
+                core: harbor.prod.net
+            tls:
+              secret:
+                secretName: tls-prod-net-wildcard
+        gitea:
+          ingress:
+            hosts:
+              - host: gitea.prod.net
+                paths: [{ path: "/" }]
+            tls:
+              - secretName: tls-prod-net-wildcard
+                hosts: [gitea.prod.net]
+        rabbitmq:
+          ingress:
+            hosts:
+              - host: rabbitmq.prod.net
+                paths: [{ path: "/", pathType: Prefix }]
+            tls:
+              - secretName: tls-prod-net-wildcard
+                hosts: [rabbitmq.prod.net]
+        redisinsight:
+          ingress:
+            hosts:
+              - host: redis.prod.net
+                paths: [{ path: "/", pathType: ImplementationSpecific }]
+            tls:
+              - secretName: tls-prod-net-wildcard
+                hosts: [redis.prod.net]
+        sonarqube:
+          ingress:
+            hosts:
+              - name: sonar.prod.net
+            tls:
+              - secretName: tls-prod-net-wildcard
+                hosts: [sonar.prod.net]
+        langflow:
+          ingress:
+            hosts:
+              - host: langflow.prod.net
+                paths: []
+            tls:
+              - secretName: tls-prod-net-wildcard
+                hosts: [langflow.prod.net]
+        ollama:
+          webui:
+            ingress:
+              hosts:
+                - host: ollama.prod.net
+                  paths: [{ path: "/", pathType: Prefix }]
+              tls:
+                - hosts: [ollama.prod.net]
+                  secretName: tls-prod-net-wildcard
   destination:
     server: https://kubernetes.default.svc
     namespace: enva

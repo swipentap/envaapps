@@ -19,11 +19,29 @@ spec:
             10.11.3.14 k3s-worker-3
         postgresql:
           pgadminHost: pgadmin.test.net
+          customPgadmin:
+            ingress:
+              host: pgadmin.test.net
+              tlsSecretName: tls-test-net-wildcard
         certa:
+          domain: test.net
+          certa:
+            ingress:
+              tls:
+                - hosts: ["certa.test.net"]
+                  secretName: tls-test-net-wildcard
           postgresql:
             enabled: false
         sins:
           haproxyIp: "10.11.3.17"
+          webui:
+            ingress:
+              hosts:
+                - host: "ns.test.net"
+                  paths: [{ path: "/", pathType: Prefix }]
+              tls:
+                - hosts: ["ns.test.net"]
+                  secretName: tls-test-net-wildcard
           postgresql:
             enabled: false
         rancher:
@@ -39,3 +57,66 @@ spec:
           domain: test.net
           credentialsSecret: freeipa-credentials
           ingressTlsSecret: tls-test-net-wildcard
+        keycloak-operator:
+          hostname: auth.test.net
+          tlsSecret: tls-test-net-wildcard
+        mailu:
+          hostnames: [mail.test.net]
+          ingress:
+            existingSecret: tls-test-net-wildcard
+        harbor:
+          expose:
+            ingress:
+              hosts:
+                core: harbor.test.net
+            tls:
+              secret:
+                secretName: tls-test-net-wildcard
+        gitea:
+          ingress:
+            hosts:
+              - host: gitea.test.net
+                paths: [{ path: "/" }]
+            tls:
+              - secretName: tls-test-net-wildcard
+                hosts: [gitea.test.net]
+        rabbitmq:
+          ingress:
+            hosts:
+              - host: rabbitmq.test.net
+                paths: [{ path: "/", pathType: Prefix }]
+            tls:
+              - secretName: tls-test-net-wildcard
+                hosts: [rabbitmq.test.net]
+        redisinsight:
+          ingress:
+            hosts:
+              - host: redis.test.net
+                paths: [{ path: "/", pathType: ImplementationSpecific }]
+            tls:
+              - secretName: tls-test-net-wildcard
+                hosts: [redis.test.net]
+        sonarqube:
+          ingress:
+            hosts:
+              - name: sonar.test.net
+            tls:
+              - secretName: tls-test-net-wildcard
+                hosts: [sonar.test.net]
+        langflow:
+          ingress:
+            hosts:
+              - host: langflow.test.net
+                paths: []
+            tls:
+              - secretName: tls-test-net-wildcard
+                hosts: [langflow.test.net]
+        ollama:
+          webui:
+            ingress:
+              hosts:
+                - host: ollama.test.net
+                  paths: [{ path: "/", pathType: Prefix }]
+              tls:
+                - hosts: [ollama.test.net]
+                  secretName: tls-test-net-wildcard
