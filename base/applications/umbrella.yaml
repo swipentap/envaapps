@@ -13,9 +13,9 @@ spec:
     targetRevision: "1.0.0-289"
     helm:
       valuesObject:
-        freeipaChartRevision: "1.0.8-244"
-        langflowChartRevision: "0.1.0-244"
-        vaultSecretsChartRevision: "0.1.0-244"
+        freeipaChartRevision: "1.0.8-289"
+        langflowChartRevision: "0.1.0-289"
+        vaultSecretsChartRevision: "0.1.0-289"
         global:
           env: prod
           domain: prod.net
