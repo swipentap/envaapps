@@ -53,6 +53,8 @@ spec:
           haproxyIp: "10.11.2.17"
           webui:
             ingress:
+              enabled: true
+              className: traefik
               hosts:
                 - host: "ns.prod.net"
                   paths: [{ path: "/", pathType: Prefix }]
