@@ -104,6 +104,8 @@ spec:
                 hosts: [gitea.prod.net]
         rabbitmq:
           ingress:
+            enabled: true
+            className: traefik
             hosts:
               - host: rabbitmq.prod.net
                 paths: [{ path: "/", pathType: Prefix }]
