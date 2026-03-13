@@ -28,17 +28,22 @@ spec:
             10.11.2.14 k3s-worker-3
           hostnames: [mail.prod.net]
           ingress:
+            enabled: true
+            ingressClassName: traefik
             existingSecret: tls-prod-net-wildcard
         postgresql:
           pgadminHost: pgadmin.prod.net
           customPgadmin:
             ingress:
+              enabled: true
               host: pgadmin.prod.net
               tlsSecretName: tls-prod-net-wildcard
         certa:
           domain: prod.net
           certa:
             ingress:
+              enabled: true
+              className: traefik
               tls:
                 - hosts: ["certa.prod.net"]
                   secretName: tls-prod-net-wildcard
@@ -78,14 +83,19 @@ spec:
           tlsSecret: tls-prod-net-wildcard
         harbor:
           expose:
+            type: ingress
             ingress:
               hosts:
                 core: harbor.prod.net
             tls:
+              enabled: true
+              certSource: secret
               secret:
                 secretName: tls-prod-net-wildcard
         gitea:
           ingress:
+            enabled: true
+            className: traefik
             hosts:
               - host: gitea.prod.net
                 paths: [{ path: "/" }]
@@ -102,6 +112,8 @@ spec:
                 hosts: [rabbitmq.prod.net]
         redisinsight:
           ingress:
+            enabled: true
+            className: traefik
             hosts:
               - host: redis.prod.net
                 paths: [{ path: "/", pathType: ImplementationSpecific }]
@@ -110,6 +122,8 @@ spec:
                 hosts: [redis.prod.net]
         sonarqube:
           ingress:
+            enabled: true
+            ingressClassName: traefik
             hosts:
               - name: sonar.prod.net
             tls:
@@ -117,6 +131,7 @@ spec:
                 hosts: [sonar.prod.net]
         langflow:
           ingress:
+            enabled: true
             hosts:
               - host: langflow.prod.net
                 paths: []
@@ -126,6 +141,8 @@ spec:
         ollama:
           webui:
             ingress:
+              enabled: true
+              className: traefik
               hosts:
                 - host: ollama.prod.net
                   paths: [{ path: "/", pathType: Prefix }]

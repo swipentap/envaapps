@@ -19,17 +19,22 @@ spec:
             10.11.3.14 k3s-worker-3
           hostnames: [mail.test.net]
           ingress:
+            enabled: true
+            ingressClassName: traefik
             existingSecret: tls-test-net-wildcard
         postgresql:
           pgadminHost: pgadmin.test.net
           customPgadmin:
             ingress:
+              enabled: true
               host: pgadmin.test.net
               tlsSecretName: tls-test-net-wildcard
         certa:
           domain: test.net
           certa:
             ingress:
+              enabled: true
+              className: traefik
               tls:
                 - hosts: ["certa.test.net"]
                   secretName: tls-test-net-wildcard
@@ -65,10 +70,13 @@ spec:
           tlsSecret: tls-test-net-wildcard
         harbor:
           expose:
+            type: ingress
             ingress:
               hosts:
                 core: harbor.test.net
             tls:
+              enabled: true
+              certSource: secret
               secret:
                 secretName: tls-test-net-wildcard
         gitea:
@@ -81,6 +89,8 @@ spec:
                 hosts: [gitea.test.net]
         rabbitmq:
           ingress:
+            enabled: true
+            className: traefik
             hosts:
               - host: rabbitmq.test.net
                 paths: [{ path: "/", pathType: Prefix }]
@@ -89,6 +99,8 @@ spec:
                 hosts: [rabbitmq.test.net]
         redisinsight:
           ingress:
+            enabled: true
+            className: traefik
             hosts:
               - host: redis.test.net
                 paths: [{ path: "/", pathType: ImplementationSpecific }]
@@ -97,6 +109,8 @@ spec:
                 hosts: [redis.test.net]
         sonarqube:
           ingress:
+            enabled: true
+            ingressClassName: traefik
             hosts:
               - name: sonar.test.net
             tls:
@@ -104,6 +118,7 @@ spec:
                 hosts: [sonar.test.net]
         langflow:
           ingress:
+            enabled: true
             hosts:
               - host: langflow.test.net
                 paths: []
@@ -113,6 +128,8 @@ spec:
         ollama:
           webui:
             ingress:
+              enabled: true
+              className: traefik
               hosts:
                 - host: ollama.test.net
                   paths: [{ path: "/", pathType: Prefix }]
