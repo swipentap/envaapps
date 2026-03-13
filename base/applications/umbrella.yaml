@@ -26,6 +26,9 @@ spec:
             10.11.2.12 k3s-worker-1
             10.11.2.13 k3s-worker-2
             10.11.2.14 k3s-worker-3
+          hostnames: [mail.prod.net]
+          ingress:
+            existingSecret: tls-prod-net-wildcard
         postgresql:
           pgadminHost: pgadmin.prod.net
           customPgadmin:
@@ -73,10 +76,6 @@ spec:
         keycloak-operator:
           hostname: auth.prod.net
           tlsSecret: tls-prod-net-wildcard
-        mailu:
-          hostnames: [mail.prod.net]
-          ingress:
-            existingSecret: tls-prod-net-wildcard
         harbor:
           expose:
             ingress:
